@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome To Admin Zone</title>
+    <style>
+        #outer
+        {
+            width:1000px;
+            height:auto;
+            min-height:1000px;
+            //border:1px solid white;
+            margin:0 auto;
+        }
+        #header
+        {
+            width:1000px;
+            height:150px;
+        }
+        #logo
+        {
+            width:150px;
+            height:150px;
+            background-color:pink;
+            float:left;
+        }
+        #banner
+        {
+            width:850px;
+            height:150px;
+            background-color:navy;
+            float:right;
+            color:white;
+            font-size:60px;
+            text-align:center;
+            line-height:150px;
+        }
+        #menu
+        {
+            width:1000px;
+            height:50px;
+            background-color:white;
+            margin-top:5px;
+            border:1px solid white;
+        }
+        #menu ul
+        {
+            list-style-type:none;
+        }
+        #menu ul li
+        {
+            display:inline;
+        }
+        #menu ul li a
+        {
+            font-size:20px;
+            padding:20px;
+            text-decoration:none;
+            color:black;
+        }
+        #main
+        {
+            width:1000px;
+            height:auto;
+            min-height:700px;
+            background-color:white;
+            margin-top:5px;
+            border:1px solid white;
+        }
+        #footer
+        {
+            width:1000px;
+            height:85px;
+            margin-top:5px;
+        }
+        #lfooter
+        {
+            width:500px;
+            height:85px;
+            background-color:black;
+            float:left;
+            color:white;
+            font-size:35px;
+            text-align:center;
+            line-height:85px;
+        }
+        #rfooter
+        {
+            width:500px;
+            height:85px;
+            background-color:navy;
+            float:right;
+            color:white;
+            font-size:35px;
+            text-align:center;
+            line-height:85px;
+        }
+    </style>
+</head>
+<body bgcolor="green">
+    <div id="outer">
+        <div id="header">
+            <div id="logo">
+                <img src="{% static 'images/logo.png' %}" width="150" height="150"/>
+            </div>
+            <div id="banner">
+                Welcome To Admin Zone
+            </div>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'adminzone:adminhome' %}">Home</a></li>
+                <li><a href="{% url 'adminzone:enquiry' %}">Enquiry</a></li>
+                <li><a href="{% url 'adminzone:jobseeker' %}">Job Seeker</a></li>
+                <li><a href="{% url 'adminzone:employee' %}">Employee</a></li>
+                <li><a href="{% url 'adminzone:changepassword' %}">Change Password</a></li>
+                <li><a href="{% url 'adminzone:logout' %}">Logout</a></li>
+            </ul>
+        </div>
+        <div id="main">
+            {% block body %}
+
+            {% endblock body %}
+        </div>
+        <div id="footer">
+            <div id="lfooter">
+                Copyright &copy; to HRMS
+            </div>
+            <div id="rfooter">
+                Developed By:- Aryan
+            </div>
+        </div>
+    </div>
+</body>
+</html>

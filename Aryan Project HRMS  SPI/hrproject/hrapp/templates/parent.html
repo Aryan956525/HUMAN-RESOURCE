@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>HRMS</title>
+    <style>
+        #outer
+        {
+            width:1000px;
+            height:1200px;
+            //border:1px solid white;
+            margin:auto;
+        }
+        #header
+        {
+            width:1000px;
+            height:150px;
+        }
+        #logo
+        {
+            width:150px;
+            height:150px;
+            background-color: pink;
+            float:left;
+        }
+        #banner
+        {
+            width:850px;
+            height:150px;
+            background-color:navy;
+            float:right;
+            font-size:50px;
+            color:white;
+            text-align:center;
+            line-height:150px;
+        }
+        #menu
+        {
+            width:1000px;
+            height:50px;
+            background-color:white;
+            margin-top:5px;
+            border:1px solid white;
+        }
+        #menu ul
+        {
+            list-style-type:none;
+        }
+        #menu ul li
+        {
+            display:inline;
+        }
+        #menu ul li a
+        {
+            padding:20px;
+            font-size:20px;
+            text-decoration:none;
+            color:black;
+        }
+        #menu ul li a:hover
+        {
+            color:red;
+        }
+        #slider
+        {
+            width:1000px;
+            height:200px;
+            background-color:grey;
+            margin-top:5px;
+        }
+        #parent
+        {
+            width:1000px;
+            height:700px;
+            margin-top:5px;
+        }
+        #left
+        {
+            width:300px;
+            height:700px;
+            background-color:aqua;
+            float:left;
+        }
+        #main
+        {
+            width:700px;
+            height:700px;
+            background-color:white;
+            float:right;
+        }
+        #footer
+        {
+            width:1000px;
+            height:80px;
+            margin-top:5px;
+        }
+        #lfooter
+        {
+            width:500px;
+            height:80px;
+            background-color:black;
+            float:left;
+            color:white;
+            font-size:30px;
+            text-align:center;
+            line-height:80px;
+        }
+        #rfooter
+        {
+            width:500px;
+            height:80px;
+            background-color:navy;
+            float:right;
+            color:white;
+            font-size:30px;
+            text-align:center;
+            line-height:80px;
+        }
+    </style>
+    <script>
+      var imgnames=["slider_1.jpg","slider_2.gif","slider_3.jpg","slider_4.jpg"];
+      var i=0;
+      baseurl="{% static 'images/' %}";
+      function moveslider()
+      {
+            if(i==imgnames.length)
+            {
+                i=0;
+            }
+            document.getElementById("slide").src=baseurl+imgnames[i];
+            i++;
+            window.setTimeout("moveslider()",2000);
+      }
+    </script>
+</head>
+<body bgcolor="green" onload="moveslider()">
+    <div id="outer">
+        <div id="header">
+            <div id="logo">
+                <img src="{% static 'images/logo.png' %}" width="150" height="150"/>
+            </div>
+            <div id="banner">
+                Human Resource Management System
+            </div>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                <li><a href="{% url 'registration' %}">Registration</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+            </ul>
+        </div>
+        <div id="slider">
+            <img id="slide" width="1000" height="200"/>
+        </div>
+        <div id="parent">
+            <div id="left">
+                <marquee direction="up" height="500" behavior="alternate" onmouseover="stop()" onmouseout="start()">
+                {% for n in nf %}
+                <p style="text-align:center;color:red;">{{n.notificationtext}}</p>
+                <p style="text-align:center;">{{n.notificationdate}}</p>
+                {% endfor %}
+                </marquee>
+            </div>
+            <div id="main">
+                {% block body %}
+
+                {% endblock body %}
+            </div>
+        </div>
+        <div id="footer">
+            <div id="lfooter">
+                Copyright &copy; to HRMS
+            </div>
+            <div id="rfooter">
+                Developed By:- Aryan
+            </div>
+        </div>
+    </div>
+</body>
+</html>

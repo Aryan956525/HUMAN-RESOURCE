@@ -1,0 +1,81 @@
+{% extends "parent.html" %}
+{% block body %}
+<h1 style="color:blue;text-align:center;">
+    Job Seeker Registration
+</h1>
+{% if msg %}
+    <p style="text-align:center;">{{msg}}</p>
+{% endif %}
+<form action="{% url 'savejobseeker' %}" method="post">
+    {% csrf_token %}
+    <table style="margin:0 auto;width:50%;">
+        <tr>
+            <td>Enter Name</td>
+            <td>
+                <input type="text" name="name"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Select Gender</td>
+            <td>
+                <input type="radio" name="gender" value="Male"/>Male
+                <input type="radio" name="gender" value="Female"/>Female
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Address</td>
+            <td>
+                <textarea name="address"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Contact No.</td>
+            <td>
+                <input type="number" name="contactno"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Email Address</td>
+            <td>
+                <input type="email" name="emailaddress"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Qualification</td>
+            <td>
+                <input type="text" name="qualification"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Experience</td>
+            <td>
+                <input type="text" name="experience"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Key Skills</td>
+            <td>
+                <textarea name="keyskills"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Date Of Birth</td>
+            <td>
+                <input type="date" name="dob"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Aadhar No</td>
+            <td>
+                <input type="number" name="aadharno"/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Submit"/>
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock body %}

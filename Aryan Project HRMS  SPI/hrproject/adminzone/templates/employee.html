@@ -1,0 +1,133 @@
+{% extends "adminparent.html" %}
+{% block body %}
+    <h1 style="color:blue;text-align:center;">
+    Employee Information System
+    </h1>
+    <form action="{% url 'adminzone:saveemployee' %}" method="post">
+        {% csrf_token %}
+        <table style="margin:0 auto;width:50%;">
+            <tr>
+                <td>Enter Employee Id</td>
+                <td>
+                    <input type="number" name="empid"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Employee Name</td>
+                <td>
+                    <input type="text" name="empname"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Select Gender</td>
+                <td>
+                    <input type="radio" name="gender" value="Male"/>Male
+                    <input type="radio" name="gender" value="Female"/>Female
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Address</td>
+                <td>
+                    <textarea name="address"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Contact No</td>
+                <td>
+                    <input type="number" name="contactno"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Email Address</td>
+                <td>
+                    <input type="email" name="emailaddress"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Date of Joining</td>
+                <td>
+                    <input type="date" name="doj"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Department</td>
+                <td>
+                    <input type="text" name="department"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Designation</td>
+                <td>
+                    <input type="text" name="designation">
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Pan No</td>
+                <td>
+                    <input type="text" name="panno"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Aadhar No</td>
+                <td>
+                    <input type="number" name="aadharno">
+                </td>
+            </tr>
+            <tr>
+                <td>Enter Salary</td>
+                <td>
+                    <input type="number" name="salary"/>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="save"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br/><br/>
+<div style="width:1000px;height:auto;overflow-x:auto;">
+    <table border="1" style="width:95%;margin:0 auto;">
+        <tr>
+            <th>Employee Id</th>
+            <th>Employee Name</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Contact NO</th>
+            <th>Email Address</th>
+            <th>Date of Joining</th>
+            <th>Department</th>
+            <th>Designation</th>
+            <th>PAN No.</th>
+            <th>Aadhar No.</th>
+            <th>Salary</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        {% for e in emp %}
+        <tr>
+            <td>{{e.empid}}</td>
+            <td>{{e.empname}}</td>
+            <td>{{e.gender}}</td>
+            <td>{{e.address}}</td>
+            <td>{{e.contactno}}</td>
+            <td>{{e.emailaddress}}</td>
+            <td>{{e.doj}}</td>
+            <td>{{e.department}}</td>
+            <td>{{e.designation}}</td>
+            <td>{{e.panno}}</td>
+            <td>{{e.aadharno}}</td>
+            <td>{{e.salary}}</td>
+            <td>
+                <a href="{% url 'adminzone:deleteemployee' e.empid %}">Delete</a>
+            </td>
+            <td>
+                <a href="{% url 'adminzone:updateemployee' e.empid %}">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+{% endblock body %}

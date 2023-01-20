@@ -1,0 +1,40 @@
+{% extends "adminparent.html" %}
+{% block body %}
+    <h1 style="color:blue;text-align:center;">
+        Manage jobseeker
+    </h1>
+<table border="1" style="margin:0 auto;width:95%;">
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>Contact No</th>
+        <th>Email Address</th>
+        <th>Qualification</th>
+        <th>Experience</th>
+        <th>Key skills</th>
+        <th>Date of Birth</th>
+        <th>Aadhar No</th>
+        <th>Reg Date</th>
+        <th>Delete</th>
+    </tr>
+    {% for j in js %}
+    <tr>
+        <td>{{j.name}}</td>
+        <td>{{j.gender}}</td>
+        <td>{{j.address}}</td>
+        <td>{{j.contactno}}</td>
+        <td>{{j.emailaddress}}</td>
+        <td>{{j.qualification}}</td>
+        <td>{{j.experience}}</td>
+        <td>{{j.keyskills}}</td>
+        <td>{{j.dob}}</td>
+        <td>{{j.aadharno}}</td>
+        <td>{{j.regdate}}</td>
+        <td>
+        <a href="{% url 'adminzone:deletejobseeker' j.emailaddress %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock body %}

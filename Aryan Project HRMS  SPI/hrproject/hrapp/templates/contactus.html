@@ -1,0 +1,58 @@
+{% extends "parent.html" %}
+{% block body %}
+<h1 style="color:blue;text-align:center;">
+    Enquiry Form
+</h1>
+{% if msg %}
+<p style="text-align:center;">{{msg}}</p>
+{% endif %}
+<form action="{% url 'saveenq' %}" method="post">
+    {% csrf_token %}
+    <table style="margin:0 auto;width:50%;">
+        <tr>
+            <td>Enter Name</td>
+            <td>
+                <input type="text" name="name"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Select Gender</td>
+            <td>
+                <input type="radio" name="gender" value="Male"/>Male
+                <input type="radio" name="gender" value="Female"/>Female
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Address</td>
+            <td>
+                <textarea name="address"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Contact No.</td>
+            <td>
+                <input type="text" name="contactno"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Email Address</td>
+            <td>
+                <input type="email" name="emailaddress"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Enquiry Text</td>
+            <td>
+                <textarea name="enquirytext"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Submit"/>
+            </td>
+        </tr>
+
+    </table>
+</form>
+{% endblock body %}
